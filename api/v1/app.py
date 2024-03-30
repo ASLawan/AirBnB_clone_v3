@@ -17,10 +17,14 @@ app.register_blueprint(app_views, url_prefix="/api/v1")
 
 @app.teardown_appcontext
 def teardown_storage(exception):
+    """class close to close storage session"""
     storage_close()
 
 
 if __name__ == "__main__":
-    host = os.getenv('HBNB_API_HOST', '0.0.0.0')
-    port = int(os.getenv('HBNB_API_PORT', 5000))
+    HBNB_API_HOST = getenv('HBNB_API_HOST')
+    HBNB_API_PORT = getenv('HBNB_API_PORT')
+    
+    host = '0.0.0.0' if not HBNB_API_HOST else HBNB_API_HOST
+    port = 5000 if not HBNB_API_PORT else HBNB_API_PORT
     app.run(host=host, port=port, threaded=True)
