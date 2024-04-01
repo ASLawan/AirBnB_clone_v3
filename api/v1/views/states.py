@@ -2,6 +2,7 @@
 """
     Module implementing routes for different HTTP methods
 
+
 """
 from api.v1.views import app_views
 from flask import jsonify, abort, make_response, request
