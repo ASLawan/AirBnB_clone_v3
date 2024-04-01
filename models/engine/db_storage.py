@@ -77,10 +77,9 @@ class DBStorage:
 
     def get(self, cls, id):
         """returns object based on class and id or None if not found"""
-        objs = self.__session.query(classes[cls])
-        for obj in objs:
-            if obj.id == id:
-                return obj
+        obj = self.__session.query(cls).filter_by(id=id).first()
+        if obj:
+            return obj
         return None
 
     def count(self, cls=None):
@@ -88,6 +87,6 @@ class DBStorage:
         if none is given"""
         num_objs = 0
         for clas in classes:
-            if cls is None or cls in classes[clas] or cls is clas:
+            if cls is None or cls in classes or cls is clas:
                 num_objs += len(self.__session.query(classes[clas]).all())
         return num_objs
