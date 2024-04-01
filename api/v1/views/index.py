@@ -14,10 +14,9 @@ def status():
 @app_views.route('/stats', methods=['GET'], strict_slashes=False)
 def get_stats():
     """returns number of instances of each object class"""
-    classes = ["Amenity", "City", "Place", "Review", "State", "User"]
-    stats = {}
-
-    for cls in classes:
-        cls_count = storage.count(cls)
-        stats[cls.lower()] = cls_count
-    return jsonify(stats)
+    return jsonify(amenities=storage.count("Amenity"),
+                   cities=storage.count("City"),
+                   places=storage.count("Place"),
+                   reviews=storage.count("Review"),
+                   states=storage.count("State"),
+                   users=storage.count("User"))
