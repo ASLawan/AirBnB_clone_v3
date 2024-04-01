@@ -7,12 +7,6 @@
 from api.v1.views import app_views
 from flask import Flask, jsonify
 from models import storage
-=======
-    Implementing an api with python flask framwork
-
-
-"""
-
 import os
 
 
@@ -26,15 +20,11 @@ app.register_blueprint(app_views, url_prefix="/api/v1")
 def not_found(error):
     """handles the not found error, 404"""
     return jsonify(error='Not found'), 404
-=======
-app.register_blueprint(app_views, url_prefix"/api/v1")
 
 
 @app.teardown_appcontext
 def teardown_storage(exception):
-
-    """calls storage.close()"""
-
+    """calls storage dot close"""
     storage.close()
 
 
