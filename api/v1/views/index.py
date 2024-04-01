@@ -1,8 +1,5 @@
 #!/usr/bin/python3
-"""
-    Module implementing api routes
 
-"""
 from api.v1.views import app_views
 from flask import jsonify
 
@@ -11,3 +8,6 @@ from flask import jsonify
 def status():
     """returns status code in JSON"""
     return jsonify(status='OK')
+=======
+@app_views.route('/status', methods=['GET'])
+
