@@ -1,5 +1,9 @@
 #!/usr/bin/python3
+"""
+    Module implementing status and stats methods
+    to return status and object numbers by class
 
+"""
 from api.v1.views import app_views
 from flask import jsonify
 from models import storage
