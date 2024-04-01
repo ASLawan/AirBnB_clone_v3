@@ -10,7 +10,7 @@ from models.user import User
 
 
 @app_views.route('/users/', methods=['GET'], strict_slashes=False)
-def get_users():
+def get_userss():
     """returns all users objects in the database"""
     users = storage.all(User)
     return jsonify([obj.to_dict() for obj in users.values()])
@@ -18,7 +18,7 @@ def get_users():
 
 @app_views.route('/users/<user_id>', methods=['GET'],
                  strict_slashes=False)
-def get_users(user_id):
+def get_user(user_id):
     """returns user based on id"""
     user = storage.get(User, user_id)
     if not user:

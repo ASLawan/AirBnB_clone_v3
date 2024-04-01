@@ -11,7 +11,7 @@ from models.city import City
 from models.state import State
 
 
-@app_views.route('/states/<state_id>/cities'. methods=['GET'],
+@app_views.route('/states/<state_id>/cities', methods=['GET'],
                  strict_slashes=False)
 def get_state_cities(state_id):
     """returns cities of a given state"""
