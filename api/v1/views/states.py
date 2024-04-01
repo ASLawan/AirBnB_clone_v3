@@ -3,9 +3,9 @@
     Module implementing routes for different HTTP methods
 
 """
+from api.v1.views import app_views
 from flask import jsonify, abort, make_response, request
 from models import storage
-from api.v1.views import app_views
 from models.state import State
 
 
@@ -29,7 +29,7 @@ def get_state(state_id):
                  strict_slashes=False)
 def delete_state(state_id):
     """deletes a state object"""
-    state = storage.get("State", state_id)
+    state = storage.get(State, state_id)
     if not state:
         abort(404)
     state.delete()
@@ -54,7 +54,7 @@ def create_state():
 @app_views.route('states/<state_id>', methods=['PUT'], strict_slashes=False)
 def update_state(state_id):
     """Updates the state object"""
-    state = storage.get("State", state_id)
+    state = storage.get(State, state_id)
     if not state:
         abort(404)
 
@@ -64,7 +64,7 @@ def update_state(state_id):
 
     for k, v in request_body.items():
         if k != 'id' and k != 'created_at' and k != 'updated_at':
-            setattr(states, k, v)
+            setattr(state, k, v)
 
     storage.save()
     return make_response(jsonify(state.to_dict()), 200)
