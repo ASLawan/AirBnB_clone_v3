@@ -47,7 +47,7 @@ def create_amenity():
     if not new_amenity:
         abort(400, "Not a JSON")
     if "name" not in new_amenity:
-        abort(400, "<Missing name")
+        abort(400, "Missing name")
     amenity = Amenity(**new_amenity)
     storage.new(amenity)
     storage.asve()
