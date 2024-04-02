@@ -87,6 +87,6 @@ class DBStorage:
         if none is given"""
         num_objs = 0
         for clas in classes:
-            if cls is None or cls in classes or cls is clas:
+            if cls is None or cls is classes[cls] or cls is clas:
                 num_objs += len(self.__session.query(classes[clas]).all())
         return num_objs
